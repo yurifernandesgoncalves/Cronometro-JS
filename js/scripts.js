@@ -30,9 +30,17 @@ function startTimer(){
                 seconds = 0;
             };
 
-            minutesEl.textContent = minutes;
-            secondsEl.textContent = seconds;
-            milisecondsEl.textContent = miliseconds;
+            minutesEl.textContent = formatTimer(minutes);
+            secondsEl.textContent = formatTimer(seconds);
+            milisecondsEl.textContent = formatMiliseconds(miliseconds);
         };
     }, 10);
 };
+
+function formatTimer(time){
+    return time < 10 ? `0${time}` : time;
+}
+
+function formatMiliseconds(time){
+    return time < 100 ? `${time}`.padStart(3, "0") : time;
+}
